@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, ViewStyle } from 'react-native';
 import { FlashList, FlashListProps } from '@shopify/flash-list';
 
 interface IRenderListProps<T> {
@@ -7,11 +7,12 @@ interface IRenderListProps<T> {
     renderItem: FlashListProps<any>['renderItem']
     keyExtractor?: (item: T, index: number) => string
     flashListProps?: Partial<FlashListProps<T>>
+    containerStyle?: ViewStyle
 }
 
 const RenderList = <T,>(props:IRenderListProps<T>) => {
     return (
-        <View style={styles.container}>
+        <View style={props.containerStyle ? [{...styles.container}, props.containerStyle ] :styles.container}>
             <FlashList
                 data={props.data}
                 renderItem={props.renderItem}

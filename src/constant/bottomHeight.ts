@@ -1,1 +1,1 @@
-export const BOTTOM_HEIGHT= '24%'
+export const BOTTOM_HEIGHT= '0%'

@@ -28,3 +28,12 @@ export const latestMessageService = async (): Promise<TMessageJSON[] | []> => {
         return []
     }
 }
+
+export const fetchLatestMessage = async (date: Date): Promise<TMessageJSON[] | []> => {
+    try {
+        const response = await apiService.get<TMessageJSON[]>(`/messages/updates/${date}`)
+        return response
+    } catch (error) {
+        return []
+    }
+}

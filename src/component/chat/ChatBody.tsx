@@ -20,10 +20,11 @@ const ChatBody = (props: IChatBody) => {
     return (
         <View style={{ flex: 1 }}>
             <RenderList
-                flashListProps={{ inverted: true, showsVerticalScrollIndicator: false }}
+                flashListProps={{ inverted: true, showsVerticalScrollIndicator: false,}}
                 keyExtractor={(item, index) => index.toString()}
                 data={[...props.messageList]?.reverse()}
                 renderItem={({ item }) => renderItem(item)}
+                containerStyle={{paddingBottom: '20%'}}
             />
         </View>
     );

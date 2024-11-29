@@ -15,11 +15,16 @@ import ChatSend from "./ChatSend";
 import { KeyboardAvoidingView } from "react-native-keyboard-controller";
 
 const Chat = () => {
-  const { messageList, isLoading, error, fetchMessage } = useMessageStore();
+  const { messageList, isLoading, error, fetchMessage, startPolling, stopPolling } = useMessageStore();
 
   useEffect(() => {
     fetchMessage();
-  }, []);
+    startPolling();
+
+    return () => {
+        stopPolling();
+    };
+}, []);
 
   if (isLoading) {
     return (

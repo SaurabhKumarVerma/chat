@@ -10,6 +10,10 @@ export interface IMessage {
     message?: string;
     handleTextInput?: (val: any) => void;
     sendMessage?: () => Promise<void>
+    startPolling?:() => void
+    stopPolling: () => void
+    lastUpdateTime: Date;
+    fetchUpdatedMessages: () => Promise<void>
 }
 
 
