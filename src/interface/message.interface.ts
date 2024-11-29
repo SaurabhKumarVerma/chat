@@ -1,11 +1,15 @@
-import { TMessageJSON } from "@chat/types/message.type";
+import { TMessage } from "../types/message.type"
+
 
 
 export interface IMessage {
-    messageList: Array<TMessageJSON>
+    messageList: Array<TMessage>
     isLoading: boolean
     error: boolean
     fetchMessage: () => Promise<void>
+    message?: string;
+    handleTextInput?: (val: any) => void;
+    sendMessage?: () => Promise<void>
 }
 
 

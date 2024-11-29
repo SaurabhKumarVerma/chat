@@ -1,4 +1,4 @@
-type TMessage = {
+export type TMessage = {
     uuid: string;
     text: string;
     attachments: TMessageAttachment[];
@@ -7,6 +7,8 @@ type TMessage = {
     authorUuid: string;
     sentAt: number;
     updatedAt: number;
+    name?: string
+    avatarUrl?:string
 };
 
 type TMessageAttachment = {

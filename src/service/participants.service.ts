@@ -1,4 +1,5 @@
-import { TParticipant } from "@chat/types/participants.type"
+
+import { TParticipant } from "../types/participants.type"
 import apiService from "./api/api"
 
 

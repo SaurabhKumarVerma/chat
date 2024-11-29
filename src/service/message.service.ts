@@ -1,10 +1,10 @@
-import { TMessageJSON } from "@chat/types/message.type"
+import { ISendMessage } from "../interface/message.interface"
+import { TMessage, TMessageJSON } from "../types/message.type"
 import apiService from "./api/api"
-import { ISendMessage } from "@chat/interface/message.interface"
 
-export const messageListService = async (): Promise<TMessageJSON[] | []> => {
+export const messageListService = async (): Promise<TMessage[] | []> => {
     try {
-        const response = await apiService.get<TMessageJSON[]>('/messages/all')
+        const response = await apiService.get<TMessage[]>('/messages/all')
         return response
     } catch (error) {
         return []
@@ -13,7 +13,7 @@ export const messageListService = async (): Promise<TMessageJSON[] | []> => {
 
 export const sendMessageService = async (message: string):Promise<ISendMessage | null> => {
     try {
-        const response = await apiService.post('/messages/new', {data: message})
+        const response = await apiService.post('/messages/new', {text: message})
         return response as unknown as ISendMessage
     } catch (error) {
         return null

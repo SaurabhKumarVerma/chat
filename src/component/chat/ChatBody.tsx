@@ -1,14 +1,34 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, View } from "react-native";
+import React from "react";
+import RenderList from "../../base/renderList/RenderList";
+import MessageBubble from "../../base/messageBubble/MessageBubble";
+import { BOTTOM_HEIGHT } from "../../constant/bottomHeight";
+import { TMessageJSON } from "../../types/message.type";
 
-const ChatBody = () => {
-  return (
-    <View style={{flex: 1,backgroundColor: 'red'}}>
-      <Text>ChatBody</Text>
-    </View>
-  )
+interface IChatBody {
+    messageList: TMessageJSON[];
 }
+const ChatBody = (props: IChatBody) => {
+    
+    const renderItem = (item:TMessageJSON) => {
+        return (
+            <View style={{marginBottom: BOTTOM_HEIGHT}}>
+                <MessageBubble message={item} />
+            </View>
+        );
+    };
+    return (
+        <View style={{ flex: 1 }}>
+            <RenderList
+                flashListProps={{ inverted: true, showsVerticalScrollIndicator: false }}
+                keyExtractor={(item, index) => index.toString()}
+                data={[...props.messageList]?.reverse()}
+                renderItem={({ item }) => renderItem(item)}
+            />
+        </View>
+    );
+};
 
-export default ChatBody
+export default ChatBody;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});
